@@ -10,8 +10,10 @@ import org.slf4j.LoggerFactory;
 import org.smart4j.chapter2.util.CollectionUtil;
 import org.smart4j.chapter2.util.PropsUtil;
 
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -56,6 +58,20 @@ public final class DatabaseHelper {
             }
         }
         return conn;
+    }
+
+    public static void executeSqlFile(String filePaht) {
+        InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(filePaht);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+        try {
+            String sql;
+            while ((sql = reader.readLine()) != null) {
+                executeUpdate(sql);
+            }
+        } catch (Exception e) {
+            LOGGER.error("execute sql file failure", e);
+            throw new RuntimeException(e);
+        }
     }
 
     public static <T> List<T> queryEntityList(Class<T> entityClass, String sql, Object... params) {

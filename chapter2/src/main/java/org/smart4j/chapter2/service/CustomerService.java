@@ -5,7 +5,6 @@ import org.slf4j.LoggerFactory;
 import org.smart4j.chapter2.helper.DatabaseHelper;
 import org.smart4j.chapter2.model.Customer;
 
-import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 
@@ -19,8 +18,8 @@ public class CustomerService {
     }
 
     public Customer getCustomer(long id) {
-        // TODO
-        return null;
+        String sql = "SELECT * FROM customer WHERE id = ?";
+        return DatabaseHelper.queryEntity(Customer.class, sql, id);
     }
 
     public boolean createCustomer(Map<String, Object> fieldMap) {

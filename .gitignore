@@ -14,3 +14,6 @@ Servers/
 
 # Mac #
 .DS_Store
+
+# ACM #
+*.class

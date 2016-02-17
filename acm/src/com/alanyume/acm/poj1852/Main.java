@@ -1,17 +1,16 @@
-package com.alanyume.acm;
+package com.alanyume.acm.poj1852;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main {
-
     static int length, ants, pos[];
     static Scan scan = new Scan();
 
     public static void main(String[] args) {
         int testCases = scan.nextInt();
-        while(testCases-- != 0) {
+        while (testCases-- != 0) {
             reader();
             solve();
         }
@@ -39,7 +38,7 @@ public class Main {
 /**
  * inputClass
  */
-class Scan{
+class Scan {
     BufferedReader buffer;
     StringTokenizer tok;
 
@@ -48,10 +47,10 @@ class Scan{
     }
 
     private boolean hasNext() {
-        while(tok == null || !tok.hasMoreElements()) {
+        while (tok == null || !tok.hasMoreElements()) {
             try {
                 tok = new StringTokenizer(buffer.readLine());
-            }catch (Exception e) {
+            } catch (Exception e) {
                 return false;
             }
         }
@@ -59,14 +58,14 @@ class Scan{
     }
 
     private String next() {
-        if(hasNext()) {
+        if (hasNext()) {
             return tok.nextToken();
         }
         return null;
     }
 
     String nextLine() {
-        if(hasNext()) {
+        if (hasNext()) {
             return tok.nextToken("\n");
         }
         return null;
@@ -77,8 +76,9 @@ class Scan{
     }
 
     long nextLong() {
-        return  Long.parseLong(next());
+        return Long.parseLong(next());
     }
+
     double nextDouble() {
         return Double.parseDouble(next());
     }

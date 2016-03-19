@@ -25,11 +25,14 @@ public class TrainServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
-        final Station stationStart = this.stationService.getStation(req.getParameter("stationStart").toCharArray()[0] - 65);
-        final Station stationEnd = this.stationService.getStation(req.getParameter("stationEnd").toCharArray()[0] - 65);
+    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp)
+            throws ServletException, IOException {
+        final Station stationStart = this.stationService.getStation(req.getParameter("stationStart")
+                .toCharArray()[0] - 65);
+        final Station stationEnd = this.stationService.getStation(req.getParameter("stationEnd")
+                .toCharArray()[0] - 65);
         final List<Integer> trainList = getTrainList(stationStart, stationEnd);
-        
+
 //        req.setAttribute("stationList", stationList);
 //        req.getRequestDispatcher("/WEB-INF/view/station_show.jsp").forward(req, resp);
     }
@@ -45,7 +48,8 @@ public class TrainServlet extends HttpServlet {
         final int eSize = endID.size();
         for (int i = 0; i < sSize; i++) {
             for (int j = 0; j < eSize; j++) {
-                if (startID.get(i).equals(endID.get(j)) && startTime.get(i).before(endTime.get(j))) {
+                if (startID.get(i).equals(endID.get(j)) && startTime.get(i).before(
+                        endTime.get(j))) {
                     trainList.add(startID.get(i));
                 }
             }
@@ -76,7 +80,8 @@ public class TrainServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(final HttpServletRequest req, final HttpServletResponse resp)
+            throws ServletException, IOException {
 //        final String stationName = req.getParameter("stationName");
 //        final String trainNameList = req.getParameter("trainNameList");
 //        final String trainTimeList = req.getParameter("trainTimeList");

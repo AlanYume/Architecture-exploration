@@ -21,7 +21,8 @@ public class RegServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp)
+            throws ServletException, IOException {
         final String user = req.getParameter("username");
         final String pass = req.getParameter("password");
 

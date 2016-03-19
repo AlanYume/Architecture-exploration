@@ -20,7 +20,8 @@ public class LoginServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(final HttpServletRequest req, final HttpServletResponse resp)
+            throws ServletException, IOException {
         final String name = req.getParameter("username");
         final String pass = req.getParameter("password");
 

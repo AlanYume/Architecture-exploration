@@ -13,7 +13,8 @@ public class CustomerShowServlet extends HttpServlet {
      * show customer information
      */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         super.doGet(req, resp);
     }
 }

@@ -13,7 +13,8 @@ public class CustomerCreateServlet extends HttpServlet {
      * loading createCustomer page
      */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp)
+            throws ServletException, IOException {
         // TODO
     }
 
@@ -21,7 +22,8 @@ public class CustomerCreateServlet extends HttpServlet {
      * deal with creatCustomer requset
      */
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(final HttpServletRequest req, final HttpServletResponse resp)
+            throws ServletException, IOException {
         // TODO
     }
 }

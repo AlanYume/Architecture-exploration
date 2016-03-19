@@ -8,12 +8,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @WebServlet("/customer_delete")
-public class CustomerDeleteServlet extends HttpServlet{
+public class CustomerDeleteServlet extends HttpServlet {
     /**
      * deal with deleteCustomer requset
      */
     @Override
-    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp)
+            throws ServletException, IOException {
         // TODO
     }
 }

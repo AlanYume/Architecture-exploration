@@ -14,7 +14,8 @@ public class CustomerEditServlet extends HttpServlet {
      * loading editeCustomer page
      */
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp)
+            throws ServletException, IOException {
         // TODO
     }
 
@@ -22,7 +23,8 @@ public class CustomerEditServlet extends HttpServlet {
      * deal with editCustomer requset
      */
     @Override
-    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPut(final HttpServletRequest req, final HttpServletResponse resp)
+            throws ServletException, IOException {
         // TODO
     }
 }

@@ -20,7 +20,7 @@ public class CustomerServiceTest {
 
     @Before
     public void init() throws Exception {
-       DatabaseHelper.executeSqlFile("sql/customer_init.sql");
+        DatabaseHelper.executeSqlFile("sql/customer_init.sql");
     }
 
     @Test
@@ -38,27 +38,27 @@ public class CustomerServiceTest {
 
     @Test
     public void createCustomerTest() throws Exception {
-        Map<String, Object> fieldMap = new HashMap<String, Object>();
+        final Map<String, Object> fieldMap = new HashMap<String, Object>();
         fieldMap.put("name", "customer100");
         fieldMap.put("contact", "John");
         fieldMap.put("telephone", "13512345678");
-        boolean result = customerService.createCustomer(fieldMap);
+        final boolean result = customerService.createCustomer(fieldMap);
         Assert.assertTrue(result);
     }
 
     @Test
     public void updateCustomerTest() throws Exception {
-        long id = 1;
-        Map<String, Object> fieldMap = new HashMap<>();
+        final long id = 1;
+        final Map<String, Object> fieldMap = new HashMap<>();
         fieldMap.put("contact", "Eric");
-        boolean result = customerService.updateCustomer(id, fieldMap);
+        final boolean result = customerService.updateCustomer(id, fieldMap);
         Assert.assertTrue(result);
     }
 
     @Test
     public void deleteCustomerTest() throws Exception {
-        long id = 1;
-        boolean result = customerService.deleteCustomer(id);
+        final long id = 1;
+        final boolean result = customerService.deleteCustomer(id);
         Assert.assertTrue(result);
     }
 }

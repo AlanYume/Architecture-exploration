@@ -61,7 +61,8 @@ public final class DatabaseHelper {
     }
 
     public static void executeSqlFile(String filePaht) {
-        InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(filePaht);
+        InputStream is = Thread.currentThread().getContextClassLoader().getResourceAsStream(
+                filePaht);
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         try {
             String sql;
@@ -144,7 +145,8 @@ public final class DatabaseHelper {
         return executeUpdate(sql, params) == 1;
     }
 
-    public static <T> boolean updateEntity(Class<T> entityClass, long id, Map<String, Object> fieldMap) {
+    public static <T> boolean updateEntity(Class<T> entityClass, long id,
+            Map<String, Object> fieldMap) {
         if (CollectionUtil.isEmpty(fieldMap)) {
             LOGGER.error("can not update entity: fieldMap is empty");
             return false;

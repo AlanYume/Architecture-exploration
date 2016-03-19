@@ -23,14 +23,16 @@ public class StationServlet extends HttpServlet {
     }
 
     @Override
-    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(final HttpServletRequest req, final HttpServletResponse resp)
+            throws ServletException, IOException {
         final List<Station> stationList = this.stationService.getStationList();
         req.setAttribute("stationList", stationList);
         req.getRequestDispatcher("/WEB-INF/view/station_show.jsp").forward(req, resp);
     }
 
     @Override
-    protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(final HttpServletRequest req, final HttpServletResponse resp)
+            throws ServletException, IOException {
         final String stationName = req.getParameter("stationName");
         final String trainNameList = req.getParameter("trainNameList");
         final String trainTimeList = req.getParameter("trainTimeList");

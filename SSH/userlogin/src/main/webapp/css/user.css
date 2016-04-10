@@ -1,0 +1,35 @@
+.table_user {
+    width: 300px;
+    margin: 0 auto;
+    font-size: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+input {
+    height: 100%;
+    width: 98%;
+}
+
+.link_group {
+    height: 40px;
+}
+
+.link_group button {
+    width: 48%;
+    height: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    text-align: center;
+    font-size: 18px;
+    background-color: rgb(0, 128, 255);
+    text-align: center;
+}
+
+.table_users {
+    width: 800px;
+    margin: 0 auto;
+    font-size: 20px;
+}

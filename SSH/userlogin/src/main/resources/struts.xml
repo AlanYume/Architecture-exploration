@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.1.7//EN"
+        "http://struts.apache.org/dtds/struts-2.1.7.dtd">
+
+<struts>
+    <!-- 将Action交给spring容器管理 -->
+    <constant name="struts.objectFactory" value="spring"/>
+    <constant name="struts.action.extension" value="do"/>
+
+    <package name="userlogin" extends="struts-default">
+        <interceptors>
+            <interceptor name="loginInterceptor" class="loginInterceptor">
+                <param name="excludeMethods ">
+                    login,register,prepareLogin,prepareRegister,logout,adminLogin,adminLogout
+                </param>
+            </interceptor>
+            <interceptor-stack name="loginInterceptorStack">
+                <interceptor-ref name="loginInterceptor"/>
+                <interceptor-ref name="defaultStack"/>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="loginInterceptorStack"/>
+
+
+        <action name="userAction" class="userAction">
+            <result name="prepareLogin">/user/login.jsp</result>
+            <result name="prepareRegister">/user/register.jsp</result>
+            <result name="userHome">/user/user_home.jsp</result>
+            <result name="adminLogin">/user/admin_login.jsp</result>
+            <result name="adminHome">/user/admin_home.jsp</result>
+        </action>
+    </package>
+
+</struts>

@@ -1,4 +1,4 @@
 UserManager
 ==================
 
-Öğ¸ö¿ò¼ÜÊ¹ÓÃ£ºStruts2 + Hibernate4 + Spring3
+é€ä¸ªæ¡†æ¶ä½¿ç”¨ï¼šStruts2 + Hibernate4 + Spring3

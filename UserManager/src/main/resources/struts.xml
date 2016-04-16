@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <!--设置 Struts 对 Web 页面的解码方式-->
+    <constant name="struts.i18n.encoding" value="utf-8"/>
+    <!--支持国际化-->
+    <constant name="struts.custom.i18n.resources" value="msg"/>
+    <!--设置系统启动时加载的时区-->
+    <constant name="struts.locale" value="en_US"></constant>
+    <!--重置允许上传的最大文件大小-->
+    <constant name="struts.multipart.maxSize" value="500000000"></constant>
+
+    <package name="myPackage" extends="struts-default">
+        <!--配置自定义的权限拦截器  -->
+        <interceptors>
+            <interceptor name="authInter" class="dps.interceptor.AuthInterceptor"></interceptor>
+        </interceptors>
+
+        <!--定义登录的 action-->
+        <action name="login" class="dps.action.UserAction" method="login">
+            <!--<result>loginSuccess.jsp</result>-->
+            <result name="success">WEB-INF/page/success.jsp</result>
+            <result name="input">login.jsp</result>
+        </action>
+        <!--对 action 添加拦截器-->
+        <action name="secret" class="dps.action.UserAction" method="secret">
+            <interceptor-ref name="authInter"/>
+            <interceptor-ref name="defaultStack"/>
+            <result name="success">WEB-INF/page/secret.jsp</result>
+            <result name="input">/login.jsp</result>
+        </action>
+        <!-- 定义注册的action -->
+        <action name="regist" class="dps.action.UserAction" method="regist">
+            <result>login.jsp</result>
+        </action>
+        <!--定义上传action-->
+        <action name="upload" class="dps.action.FileAction" method="upload">
+            <param name="savePath">/uploadFiles</param>
+            <result name="success">/uploadSucc.jsp</result>
+        </action>
+        <!--定义下载action-->
+        <action name="download" class="dps.action.FileDownloadAction">
+            <!-- 定义被下载文件的物理资源 -->
+            <param name="inputPath">\downloadFiles\abc.rar</param>
+            <!-- 配置结果类型为stream的结果 -->
+            <result name="success" type="stream">
+                <!-- 指定下载文件的文件类型 -->
+                <param name="contentType">application/rar</param>
+                <!-- 指定由getTargetFile()方法返回被下载文件的InputStream -->
+                <param name="inputName">targetFile</param>
+                <param name="contentDisposition">filename="abc.rar"</param>
+                <!-- 指定下载文件的缓冲大小 -->
+                <param name="bufferSize">4096</param>
+            </result>
+        </action>
+        <action name="download2" class="dps.action.FileDownloadAction">
+            <param name="inputPath">\images\疯狂联盟.jpg</param>
+            <result name="success" type="stream">
+                <param name="contentType">image/jpg</param>
+                <param name="inputName">targetFile</param>
+                <param name="contentDisposition">filename="wjc_logo.jpg"</param>
+                <param name="bufferSize">4096</param>
+            </result>
+        </action>
+    </package>
+</struts>

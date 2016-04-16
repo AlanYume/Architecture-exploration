@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- Database connection settings -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.pool_size">20</property>
+        <property name="connection.url">jdbc:mysql://127.0.0.1:3306/mydb</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password"></property>
+        <property name="hbm2ddl.auto">update</property>
+        <!--是否在后台显示 Hibernate 用到的 SQL 语句-->
+        <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
+        <!--指 Hibernate 每次从数据库中取出并放到 JDBC 的 Statement 中的记录条数。数字越大，读数据库的次数越少，速度越快-->
+        <property name="jdbc.fetch_size">50</property>
+        <!--指 Hibernate 批量插入、删除和更新时每次操作记录的条数。数值越大，向数据库发送 sql 的次数越少，速度越快，同时占用的内存也越大-->
+        <property name="jdbc.batch_size">23</property>
+        <!--是否允许 Hibernate 用 JDBC 的可滚动的结果集。分页的结果集对分页时的设置非常有帮助-->
+        <property name="jdbc.use_scrollable_resultset">false</property>
+        <property name="Connection.useUnicode">true</property>
+        <property name="connection.characterEncoding">UTF-8</property>
+
+        <!--加载 user.hbm.xml-->
+        <mapping resource="hibernater.model/User.hbm.xml"/>
+        <mapping resource="hibernater.model/MyClass.hbm.xml"/>
+        <mapping resource="hibernater.model/Student.hbm.xml"/>
+    </session-factory>
+</hibernate-configuration>

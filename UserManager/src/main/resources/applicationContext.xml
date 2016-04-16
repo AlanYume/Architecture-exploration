@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="p1" class="dps.bean.Person">
+        <property name="name" value="张三"/>
+    </bean>
+
+    <bean id="paperCup" class="dps.bean.PaperCup">
+        <property name="color" value="白"/>
+    </bean>
+    <bean id="glassCup" class="dps.bean.GlassCup">
+        <property name="color" value="黑"/>
+    </bean>
+    <bean id="chinese" class="dps.bean.Chinese">
+        <property name="name" value="王五"/>
+        <property name="cup" ref="glassCup"/>
+    </bean>
+    <bean id="american" class="dps.bean.American">
+        <constructor-arg value="yume" index="0"/>
+        <constructor-arg ref="paperCup" index="1"/>
+    </bean>
+
+    <bean id="p2" class="dps.bean.Person" init-method="init">
+        <property name="name" value="李四"/>
+    </bean>
+    <!-- 所有Bean的默认后处理器 -->
+    <bean class="com.beanPostProcessor.MyBeanPostProcessor"/>
+    <!-- 配置容器后处理器 -->
+    <bean class="com.beanFactoryProcessor.MyBeanFactoryPostProcessor"/>
+
+    <!--   定义三类User  -->
+    <bean id="admin" class="dps.bean.SUser">
+        <property name="username" value="admin"/>
+    </bean>
+    <bean id="register" class="dps.bean.SUser">
+        <property name="username" value="register"/>
+    </bean>
+    <bean id="other" class="dps.bean.SUser">
+        <property name="username" value="other"/>
+    </bean>
+    <!--   目标bean定义  -->
+    <bean id="serviceTarget" class="dps.dao.SUserDaoImpl"/>
+    <!--   日志拦截器定义  -->
+    <bean id="logInterceptor" class="dps.interceptor.SLogInterceptor"/>
+    <!--   权限验证拦截器定义  -->
+    <bean id="authorityInterceptor" class="dps.interceptor.SAuthorityInterceptor">
+        <property name="user" ref="admin"/>
+    </bean>
+    <!--   AOP代理设置  -->
+    <bean id="service" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="proxyInterfaces" value="dps.dao.SUserDao"></property>
+        <property name="target" ref="serviceTarget"></property>
+        <property name="interceptorNames">
+            <list>
+                <value>authorityInterceptor</value>
+                <value>logInterceptor</value>
+            </list>
+        </property>
+    </bean>
+    <!-- 供测试端调用的代理bean定义-->
+    <bean id="test" class="dps.service.SUserServiceImpl">
+        <property name="testDao" ref="service"></property>
+    </bean>
+</beans>
